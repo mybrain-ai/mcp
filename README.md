@@ -71,6 +71,17 @@ citations. It is rate limited and spends your plan quota.
 [official MCP Registry](https://registry.modelcontextprotocol.io/) as
 `io.github.mybrain-ai/mcp`.
 
+Publishing (maintainers only) needs an **Owner** of the `mybrain-ai` org. The
+interactive `mcp-publisher login github` only grants the personal namespace
+([registry#1468](https://github.com/modelcontextprotocol/registry/issues/1468)); log in
+with a PAT instead (classic with `read:org`, or fine-grained with "Organization →
+Members → Read-only"), on `mcp-publisher` 1.8.1 or newer:
+
+```bash
+./mcp-publisher login github --token "$GH_PAT"
+./mcp-publisher publish
+```
+
 ## License
 
 The files in this repository are released under the [MIT License](LICENSE). See
