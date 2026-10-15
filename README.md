@@ -7,21 +7,43 @@ that teach an AI agent how to use your brain well.
 
 | Endpoint | Transport | Auth |
 |----------|-----------|------|
-| `https://mcp.mybrain.ai/mcp/` | Streamable HTTP | `Authorization: Bearer <MCP API key>` |
+| `https://mcp.mybrain.ai/mcp/` | Streamable HTTP | OAuth 2.1 sign-in, or `Authorization: Bearer <MCP API key>` |
 
-Create the key in myBrain: **Settings → Connected Apps → MCP Integrations**. Keys carry
-scopes: `mcp:read` (search and read tools), `mcp:write` (add sources, approve, import
-memories), `mcp:orchestrator` (`ask_mybrain`). Keep the trailing slash in the URL.
+Keep the trailing slash in the URL.
+
+Clients that support OAuth (claude.ai, ChatGPT, Claude Code) need only the URL: they
+open the myBrain sign-in, you choose what to grant on the consent page, and the client
+receives its own token. Every other client uses an MCP API key, created in myBrain:
+**Settings → Connected Apps → MCP Integrations**.
+
+Both carry scopes: `mcp:read` (search and read tools), `mcp:write` (add sources,
+approve, import memories), `mcp:orchestrator` (`ask_mybrain`). Signed-in apps and API
+keys are listed in the same Settings page, and revoking one there cuts its access
+immediately.
 
 ## Connect
 
-**Claude Code**
+**claude.ai** (also used by the Claude desktop and mobile apps): Settings → Connectors →
+**Add custom connector**, paste `https://mcp.mybrain.ai/mcp/` and sign in to myBrain.
+
+**ChatGPT** (plans with Developer mode): Settings → Apps & Connectors → Advanced
+settings → turn on **Developer mode**, then **Create** a connector with the URL
+`https://mcp.mybrain.ai/mcp/` and authentication **OAuth**, and sign in to myBrain.
+
+**Claude Code**, signing in:
 
 ```bash
-claude mcp add mybrain --transport http --url https://mcp.mybrain.ai/mcp/ --header "Authorization: Bearer YOUR_MCP_API_KEY"
+claude mcp add --transport http mybrain https://mcp.mybrain.ai/mcp/
+claude mcp login mybrain   # or /mcp inside a session
 ```
 
-**Claude Desktop, Cursor, VS Code** (`mcpServers` in the client config):
+or with an API key:
+
+```bash
+claude mcp add --transport http mybrain https://mcp.mybrain.ai/mcp/ --header "Authorization: Bearer YOUR_MCP_API_KEY"
+```
+
+**Claude Desktop (config file), Cursor, VS Code** (`mcpServers` in the client config):
 
 ```json
 {
@@ -81,6 +103,9 @@ Members → Read-only"), on `mcp-publisher` 1.8.1 or newer:
 ./mcp-publisher login github --token "$GH_PAT"
 ./mcp-publisher publish
 ```
+
+A published version is immutable, so every change to `server.json` ships with a new
+`version`.
 
 ## License
 

@@ -8,7 +8,7 @@
     "url": "https://github.com/mybrain-ai/mcp",
     "source": "github"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "remotes": [
     {
       "type": "streamable-http",
@@ -16,8 +16,8 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer <MCP API key>. Create the key in myBrain: Settings > Connected Apps > MCP Integrations.",
-          "isRequired": true,
+          "description": "Bearer token. Clients with OAuth (claude.ai, ChatGPT, Claude Code) get it by signing in to myBrain; other clients use an MCP API key created in myBrain: Settings > Connected Apps > MCP Integrations.",
+          "isRequired": false,
           "isSecret": true
         }
       ]
