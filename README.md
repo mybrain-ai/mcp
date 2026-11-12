@@ -1,5 +1,7 @@
 # myBrain MCP
 
+[![mcptry](https://mcptry.com/badge/io.github.mybrain-ai/mcp)](https://mcptry.com/servers/io.github.mybrain-ai/mcp)
+
 [myBrain](https://mybrain.ai) is your personal knowledge base: everything you upload,
 link, record or write becomes a knowledge graph you can search, explore and reason
 over. This repository is the public home of the **MCP server entry** and of the files
