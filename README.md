@@ -1,4 +1,4 @@
-# myBrain MCP
+# MyBrain MCP
 
 [myBrain](https://mybrain.ai) is your personal knowledge base: everything you upload,
 link, record or write becomes a knowledge graph you can search, explore and reason
