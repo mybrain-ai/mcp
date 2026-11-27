@@ -1,0 +1,17 @@
+{
+  "name": "mybrain",
+  "owner": {
+    "name": "myBrain",
+    "url": "https://mybrain.ai"
+  },
+  "metadata": {
+    "description": "The myBrain plugin for Claude: your personal knowledge base and memory."
+  },
+  "plugins": [
+    {
+      "name": "mybrain",
+      "source": "./plugins/mybrain",
+      "description": "Search, explore and add to your myBrain from Claude: your files, notes, videos and saved memories as a knowledge graph."
+    }
+  ]
+}

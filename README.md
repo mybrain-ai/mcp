@@ -21,6 +21,21 @@ approve, import memories), `mcp:orchestrator` (`ask_mybrain`). Signed-in apps an
 keys are listed in the same Settings page, and revoking one there cuts its access
 immediately.
 
+## Claude plugin
+
+The [`plugins/mybrain`](plugins/mybrain) plugin bundles the connector and the `mybrain`
+skill, so Claude knows when and how to use your brain. Install it from the Claude
+directory, or in Claude Code:
+
+```bash
+claude plugin marketplace add mybrain-ai/mcp
+claude plugin install mybrain@mybrain
+```
+
+then run `/mcp` and choose Authenticate for `mybrain`. The plugin uses the same server
+URL as the connector below, so you see one set of tools if you have both. Its tools are
+named `mcp__plugin_mybrain_mybrain__*`.
+
 ## Connect
 
 **claude.ai** (also used by the Claude desktop and mobile apps): Settings → Connectors →
@@ -69,7 +84,8 @@ a source pending your approval. Pick what fits your client:
 | [`templates/AGENTS.md`](templates/AGENTS.md) | Same guidance for clients that read `AGENTS.md` (Codex, Cursor, others). |
 
 All three assume the server is connected as `mybrain` (tool names `mcp__mybrain__*`
-in Claude Code).
+in Claude Code); the skill also names the plugin's tools (`mcp__plugin_mybrain_mybrain__*`).
+The plugin above already ships the skill.
 
 ## Tools
 
@@ -78,11 +94,13 @@ Read (`mcp:read`): `recall_memories`, `list_memories`, `search_user_knowledge`,
 `list_sources`, `explore_node`, `trace_path`, `get_knowledge_overview`,
 `list_knowledge_fields`, `get_knowledge_node`, `get_related_concepts`,
 `list_chat_threads`, `get_chat_history`, `get_suggested_questions`,
-`get_ingestion_status`, `get_usage_summary`.
+`get_ingestion_status`, `get_usage_summary`, and `list_skills` / `get_skill` for the
+procedures you wrote in myBrain (each skill you serve to agents is also an MCP prompt).
 
 Write (`mcp:write`): `add_source_text`, `add_source_url`, `add_source_youtube`,
-`approve_source`, `import_memories`. Writes land as a source pending your approval in
-myBrain and are processed only after you approve.
+`approve_source`, `import_memories`, `propose_skill`. New sources wait for your approval
+by default; the agent adds one at once, or approves a pending one, only when you ask it
+to. Memory imports and proposed skills always wait for your approval in the myBrain app.
 
 Ask (`mcp:orchestrator`): `ask_mybrain`, a full answer synthesized over your brain with
 citations. It is rate limited and spends your plan quota.

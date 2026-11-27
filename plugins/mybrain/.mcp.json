@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mybrain": {
+      "type": "http",
+      "url": "https://mcp.mybrain.ai/mcp/"
+    }
+  }
+}

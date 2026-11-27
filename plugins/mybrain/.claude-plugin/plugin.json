@@ -1,0 +1,19 @@
+{
+  "name": "mybrain",
+  "displayName": "myBrain",
+  "version": "0.1.0",
+  "description": "Search, explore and add to your myBrain from Claude: your files, notes, videos and saved memories as a knowledge graph, with answers cited from your own sources.",
+  "author": {
+    "name": "myBrain",
+    "url": "https://mybrain.ai"
+  },
+  "homepage": "https://mybrain.ai",
+  "repository": "https://github.com/mybrain-ai/mcp",
+  "license": "MIT",
+  "keywords": ["knowledge base", "memory", "notes", "knowledge graph", "second brain"],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/mybrain-ai/mcp/tree/main/plugins/mybrain#readme",
+  "supportUrl": "https://github.com/mybrain-ai/mcp/tree/main/plugins/mybrain#support",
+  "privacyPolicyUrl": "https://mybrain.ai/privacy",
+  "termsOfServiceUrl": "https://mybrain.ai/terms"
+}
